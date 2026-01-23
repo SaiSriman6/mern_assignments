@@ -1,3 +1,9 @@
+//Student Marks List
+//Scenario : You receive marks from an exam system.
+
+//Test data:
+//marks = [78, 92, 35, 88, 40, 67];
+
 const marks = [78, 92, 35, 88, 40, 67];
 //1. filter() marks ≥ 40 (pass marks)
 let res31=marks.filter(x=>x>=40)
