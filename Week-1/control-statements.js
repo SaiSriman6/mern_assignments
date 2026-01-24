@@ -21,6 +21,7 @@ else{
 console.log(msg)    // Print the message
 
 
+
 //Course Price Tag Labeler
 //Initial data:
 //price = 1299;
@@ -41,3 +42,16 @@ else{
 }
 //5. Print the label
 console.log(courseTag)
+
+
+
+
+//Enrollment Eligibility Checker
+//Initial data:
+let hasPaid=true;
+let hasCompletedBasics=false;
+//If both conditions are true → "Enroll Now"
+//Otherwise → "Complete Requirements"
+let enrollMessage=(hasPaid==true && hasCompletedBasics==true)?"Enroll now":"Complete Requirements";  // Using ternary operator and storing result into enrollMessage
+//Printing message
+console.log(enrollMessage);
