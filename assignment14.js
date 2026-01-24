@@ -1,7 +1,8 @@
-/*Marks are stored subject-wise for a student.
-
+//Exam Result Summary
+//Marks are stored subject-wise for a student.
+/*
 Test data:
-marks = {
+const marks = {
   maths: 78,
   physics: 65,
   chemistry: 82,
@@ -16,30 +17,24 @@ const marks = {
 };
 
 //Calculate total marks
-let r11=0;
-for(let i in marks){
- r11+=marks[i];
-}
-console.log(r11);
+let totalmarks=Object.values(marks).reduce((acc,x)=> acc+x);
+console.log(totalmarks);
 
 //Calculate average marks
-let r12=0;
-let count=0;
-for(let i in marks){
-    r12+=marks[i];
-    count++;
-}
-r12/=count;
-console.log(r12);
+let avgmarks=Object.values(marks).reduce((acc,x)=> acc+x) / Object.values(marks).length;
+console.log(avgmarks);
 
-//Find the highest scoring subject
-let max=0;
-for(let i in marks){
-    if(marks[i]>max){
-        max=marks[i];
-    }
+//Finding highest scoring Subject
+let maxsub;
+let maxmarks=0
+for (let subject in marks) {
+  if (marks[subject] > maxmarks) {
+    maxsub=subject;
+    maxmarks=marks[subject];
+  }
 }
-console.log(max);
+console.log(maxsub);
+
 
 //Add a new subject computer: 90
 marks.computer=90;
