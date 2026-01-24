@@ -7,11 +7,6 @@ const settings = {
   autoSave: false,
   language: "en"
 };
-Tasks :
-    1.Toggle theme between "light" and "dark"
-    2. Turn autoSave to true
-    3. Remove the notifications setting
-    4. Freeze the settings object so it cannot be modified
 */
 
 const settings = {
@@ -20,6 +15,8 @@ const settings = {
   autoSave: false,
   language: "en"
 };
+
+//Toggle theme between "light" and "dark"
 if (settings.theme === "light") {
   settings.theme = "dark";
 } else {
@@ -27,10 +24,13 @@ if (settings.theme === "light") {
 }
 console.log(settings.theme);
 
+//Turn autoSave to true
 settings.autoSave=true;
 console.log(settings.autoSave);
 
+// Remove the notifications setting
 delete settings.notifications
 console.log(settings.notifications)
 
+//Freeze the settings object so it cannot be modified
 Object.freeze(settings); 
