@@ -1,17 +1,12 @@
 /*Marks are stored subject-wise for a student.
 
 Test data:
-const marks = {
+marks = {
   maths: 78,
   physics: 65,
   chemistry: 82,
   english: 55
 };
-Tasks:
-    1. Calculate total marks
-    2. Calculate average marks
-    3. Find the highest scoring subject
-    4. Add a new subject computer: 90
 */
 const marks = {
   maths: 78,
@@ -20,21 +15,24 @@ const marks = {
   english: 55
 };
 
-let r1=0;
+//Calculate total marks
+let r11=0;
 for(let i in marks){
- r1+=marks[i];
+ r11+=marks[i];
 }
-console.log(r1);
+console.log(r11);
 
-let r2=0;
+//Calculate average marks
+let r12=0;
 let count=0;
 for(let i in marks){
-    r2+=marks[i];
+    r12+=marks[i];
     count++;
 }
-r2/=count;
-console.log(r2);
+r12/=count;
+console.log(r12);
 
+//Find the highest scoring subject
 let max=0;
 for(let i in marks){
     if(marks[i]>max){
@@ -43,5 +41,6 @@ for(let i in marks){
 }
 console.log(max);
 
+//Add a new subject computer: 90
 marks.computer=90;
 console.log(marks)
