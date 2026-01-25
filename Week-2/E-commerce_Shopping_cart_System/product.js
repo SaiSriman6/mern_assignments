@@ -19,23 +19,32 @@ return products;
                           
 export function getProductsByCategory(category) {
 // Filter products by category
-
+let res2=products.filter(x=>x.category==category);
+return res2;
 }
                           
 export function searchProducts(query) {
 // Search products by name (case-insensitive)
-let res3=products
+let res3=products.find(x=>x.name==query);
+return res3;
 }
                           
 export function checkStock(productId, quantity) {
 // Check if product has enough stock
 // Return true/false
-let res4=products.find(x=>x.id==productId && quantity<x.stock);
-console.log(res4);
-
-
+let res4=products.find(x=>x.id==productId);
+return res4.stock > quantity;
 }
                           
 export function reduceStock(productId, quantity) {
 // Reduce product stock after purchase
+ return products.map(product => {
+ if (product.id === productId) {
+ return {
+ ...product,
+ stock: product.stock - quantity
+ };
+}
+return product;
+});
 }
