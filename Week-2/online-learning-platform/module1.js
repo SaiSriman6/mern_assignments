@@ -23,5 +23,6 @@ let res4=users.find(x=>x.id==3);
 console.log(res4);
 
 // -> Deactivate a user immutably
+let deactivateUser=(users,id)=>users.map(user=>user.id === id?{...user,active:false}:user);
 
 
