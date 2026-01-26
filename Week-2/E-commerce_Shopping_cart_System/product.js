@@ -9,7 +9,11 @@ const products = [
 export function getProductById(id) {
 // Find and return product by ID
 let res1=products.find(x=>x.id==id);
-return res1;
+if(res1){
+    return res1;
+}else{
+    return "Product not available";
+}
 }
                          
 export function getAllProducts() {
@@ -25,7 +29,10 @@ return res2;
                           
 export function searchProducts(query) {
 // Search products by name (case-insensitive)
-let res3=products.find(x=>x.name==query);
+let res3=products.filter(x=>x.name.toLowerCase().includes(query.toLowerCase()));
+if(!res3){
+    return "product not found";
+}
 return res3;
 }
                           
