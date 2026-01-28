@@ -8,35 +8,35 @@ const products = [
 ];                
 // TODO: Implement these functions                          
 export function getProductById(id) {
-// Find and return product by ID
-return products.find(product=>product.id==id);
+ // Find and return product by ID
+ return products.find(product=>product.id==id);
 }
                          
 export function getAllProducts() {
-// Return all products
-return products;
+ // Return all products
+ return products;
 }
                           
 export function getProductsByCategory(category) {
-// Filter products by category
-let requiredProducts=products.filter(product=>product.category==category);
-return requiredProducts;
+ // Filter products by category
+ let requiredProducts=products.filter(product=>product.category==category);
+ return requiredProducts;
 }
                           
 export function searchProducts(query) {
-// Search products by name (case-insensitive)
-  return products.filter(product=>product.name.toLowerCase().includes(query.toLowerCase()));
+ // Search products by name (case-insensitive)
+ return products.filter(product=>product.name.toLowerCase().includes(query.toLowerCase()));
 }
                           
 export function checkStock(productId, quantity) {
-// Check if product has enough stock
-// Return true/false
-let productStock=products.find(x=>x.id==productId);
-return productStock.stock > quantity;
+ // Check if product has enough stock
+ // Return true/false
+ let productStock=products.find(x=>x.id==productId);
+ return productStock.stock > quantity;
 }
                           
 export function reduceStock(productId, quantity) {
-// Reduce product stock after purchase
+ // Reduce product stock after purchase
  let productReduce=products.find(product=> product.id ===productId);
  if( !productReduce && productReduce.stock< quantity){
     return "Stock not available";
