@@ -32,6 +32,8 @@ console.log(user);
 
 //.Log both original and copied objects
 console.log(userShallowCopy);
+console.log(user);
+
 
 //Observe what changes and what doesn’t
 I observed that shallow copy copies only the first level of an object. Nested objects are shared by reference, 
@@ -63,11 +65,11 @@ let order = {
     address: {
     city: "Hyderabad",
     pincode: 500085
-}
-},
-items: [
- { product: "Laptop", price: 70000 }
-]
+    }
+    },
+     items: [
+      { product: "Laptop", price: 70000 }
+     ]
 };
 
 // 1. Create a deep copy of order
@@ -82,4 +84,5 @@ orderCopy.customer.address.city='mumbai';
 
 // iii. Verify original object remains unchanged
 console.log(order);
+
 //original order remained unchanged
