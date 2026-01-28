@@ -5,6 +5,8 @@
 import {validateTitle,validateDueDate,validatePriority} from "./validator.js";
 
 const tasks=[];
+let id=1;
+
 
 // 1. Add new task
 //function addTask(title, priority, dueDate) {
@@ -26,6 +28,7 @@ function addTask(title,priority,dueDate){
     return dueDatemsg;
   }
   let task={
+      id:id++,
       title,
       priority,
       dueDate,
@@ -49,10 +52,10 @@ function getAllTasks(){
 // Find task and mark as complete
 //}
 
-function completeTask(title){
-   let task=tasks.find(x=>x.title==title);
+function completeTask(taskId){
+   let task=tasks.find(x=>x.id==taskId);
    if(!task){
-    return 'invalid task name';
+    return 'Task not found';
    }
    task.completed=true;
    return "task has been completed";
