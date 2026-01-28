@@ -13,7 +13,7 @@ console.log(addTask('python','medium','26-01-2026'))
 console.log(getAllTasks());
 
 // 3. Complete a task
-console.log(completeTask('java'));
+console.log(completeTask(1));
 
 // 4. Display all tasks again
 console.log(getAllTasks());
