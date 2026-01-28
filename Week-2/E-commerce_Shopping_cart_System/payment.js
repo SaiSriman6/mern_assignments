@@ -16,46 +16,38 @@ function generateOrderId() {
   return 'ORD' + Date.now();
 }
 
-export function processPayment(paymentMethod, couponCode = null) {
+export function processPayment(paymentMethod, couponCode=null) {
+ // Get cart items and total
 
+ let items=getCartItems();
+ let subtotal=getCartTotal();
 
-// Get cart items and total
+ //Apply discount if coupon provided
+ let discount = 0;
+ let finalTotal = subtotal;
+ let discountMessage="no discount applied";
+ if(couponCode){
+  let discountResult=applyDiscount(subtotal,couponCode,items);
+  discount=discountResult.discount;
+  finalTotal=discountResult.finalTotal;
+  discountMessage=discountResult.message;
+ }
 
-let cartItems=getCartItems();
-let subtotal=getCartTotal();
+ //Validate payment method (card/upi/cod)
+ if(!validatePaymentMethod(paymentMethod)){
+  return{status:"failed",message:"Invalid payment method"};
+ }
 
-//Apply discount if coupon provided
-  let discount = 0;
-  let finalTotal = subtotal;
-  let discountMessage="no discount applied";
-  if(couponCode) {
-    let discountResult=applyDiscount(subtotal,couponCode,cartItems);
-    discount=discountResult.discount;
-    finalTotal=discountResult.finalTotal;
-    discountMessage=discountResult.message;
-  }
-
-//Validate payment method (card/upi/cod)
-if(!validatePaymentMethod(paymentMethod)){
-    return{status:"failed",message:"Invalid payment method"};
-}
-
-//Process payment (simulate)
-
-
-// Reduce stock for all items
- cartItems.forEach(item => {
-    reduceStock(item.id, item.quantity);
-  });
+ // Reduce stock for all items
+ items.forEach(item=>{reduceStock(item.id, item.quantity);});
   
 // 6. Clear cart
-clearCart();
-
+ clearCart();
 
 // 7. Generate order summary
 return {
     orderId: generateOrderId(),
-    items: cartItems,
+    items,
     subtotal: subtotal,
     discount: discount,
     total: finalTotal,
@@ -63,6 +55,5 @@ return {
     status: "success",
     message: discountMessage
 };
-
 }
-                                                  
+                                                
