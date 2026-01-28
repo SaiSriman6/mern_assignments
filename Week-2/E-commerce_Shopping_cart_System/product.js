@@ -1,3 +1,4 @@
+//Product Catalog
 const products = [
 { id: 1, name: 'Laptop', price: 50000, stock: 10, category: 'electronics' },
 { id: 2, name: 'Phone', price: 30000, stock: 15, category: 'electronics' },
@@ -8,12 +9,7 @@ const products = [
 // TODO: Implement these functions                          
 export function getProductById(id) {
 // Find and return product by ID
-let res1=products.find(x=>x.id==id);
-if(res1){
-    return res1;
-}else{
-    return "Product not available";
-}
+return products.find(product=>product.id==id);
 }
                          
 export function getAllProducts() {
@@ -23,35 +19,28 @@ return products;
                           
 export function getProductsByCategory(category) {
 // Filter products by category
-let res2=products.filter(x=>x.category==category);
-return res2;
+let requiredProducts=products.filter(product=>product.category==category);
+return requiredProducts;
 }
                           
 export function searchProducts(query) {
 // Search products by name (case-insensitive)
-let res3=products.filter(x=>x.name.toLowerCase().includes(query.toLowerCase()));
-if(!res3){
-    return "product not found";
-}
-return res3;
+  return products.filter(product=>product.name.toLowerCase().includes(query.toLowerCase()));
 }
                           
 export function checkStock(productId, quantity) {
 // Check if product has enough stock
 // Return true/false
-let res4=products.find(x=>x.id==productId);
-return res4.stock > quantity;
+let productStock=products.find(x=>x.id==productId);
+return productStock.stock > quantity;
 }
                           
 export function reduceStock(productId, quantity) {
 // Reduce product stock after purchase
- return products.map(product => {
- if (product.id === productId) {
- return {
- ...product,
- stock: product.stock - quantity
- };
-}
-return product;
-});
+ let productReduce=products.find(product=> product.id ===productId);
+ if( !productReduce && productReduce.stock< quantity){
+    return "Stock not available";
+ }
+ productReduce.stock-=quantity;
+ return "Product Stock Reduced";
 }
