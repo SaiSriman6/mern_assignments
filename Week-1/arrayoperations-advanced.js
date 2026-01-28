@@ -12,26 +12,30 @@ const cart = [
   { id: 103, name: "Keyboard", price: 1500, quantity: 1, inStock: false },
   { id: 104, name: "Monitor", price: 12000, quantity: 1, inStock: true }
 ];
-
 //Use filter() to get only inStock products
-let res11=cart.filter(x=>x.inStock==true)
-console.log(res11)
+let inStockProducts=cart.filter(x=>x.inStock==true)
+console.log('Products available are',inStockProducts)
 
 //Use map() to create a new array with:  { name, totalPrice }
-let res12=cart.map(x=> [x.name,x.price*x.quantity])
-console.log(res12)
+let coursesWithDetails=cart.map(x=> [x.name,x.price*x.quantity])
+console.log('Product With details',coursesWithDetails);
 
 //Use reduce() to calculate grand total cart value
-let res13=cart.reduce((acc,x)=>acc+x.quantity+x.price,0)
-console.log(res13)
+let cartTotal=cart.reduce((acc,item)=>acc+item.quantity+item.price,0)
+console.log(cartTotal);
 
 //Use find() to get details of "Mouse"
-let res14=cart.find(x=>x.name=='Mouse')
-console.log(res14)
+let mouseInCart=cart.find(x=>x.name=='Mouse')
+if(!mouseInCart){
+  console.log('mouse is not in cart');
+}
+else{
+  console.log('mouse is in cart');
+}
 
 //Use findIndex() to find the position of "Keyboard"
-let res15=cart.findIndex(x=>x.name=='Keyboard')
-console.log(res15)
+let indexOfKeyboard=cart.findIndex(x=>x.name=='Keyboard')
+console.log('Index of keyboard',indexOfKeyboard)
 
 
 //Employee Payroll Processor
@@ -51,27 +55,27 @@ const employees = [
 ];
 
 //filter() employees from IT department
-let res21=employees.filter((x)=> x.department=='IT');
-console.log(res21);
+let itEmployees=employees.filter((emp)=> emp.department=='IT');
+console.log('IT employees are',itEmployees);
 
 //map() to add: netSalary = salary + 10% bonus
-let res22=employees.map((x)=>{ 
-       x.netsalary=x.salary+(x.salary*10)/100;
-       return x;
+let empWithNetSalary=employees.map((emp)=>{ 
+    let netsalary=emp.salary+(emp.salary*10)/100;
+    return{...emp,netsalary};
 })
-console.log(res22);
+console.log('employees with net salary',empWithNetSalary);
 
 //reduce() to calculate total salary payout
-let res23=employees.reduce((acc,x)=>acc+x.salary,0);
-console.log(res23);
+let payout=employees.reduce((acc,emp)=>acc+emp.salary,0);
+console.log('total salary payout',payout);
 
 //find() employee with salary 30000
-let res24=employees.find(x=>x.salary==30000);
-console.log(res24);
+let empWithSalary=employees.find(emp=>emp.salary==30000);
+console.log('emp with 30000 salary',empWithSalary);
 
 //findIndex() of employee "Neha"
-let res25=employees.findIndex(x=>x.name=="Neha");
-console.log(res25);
+let indexOfNeha=employees.findIndex(emp=>emp.name=="Neha");
+console.log('Neha index is',indexOfNeha);
 
 //Student Performance Dashboard
 //You are working on a college result analysis system.
@@ -93,42 +97,42 @@ const students = [
 ];
 
 //filter() students who passed (marks ≥ 40)
-let res31=students.filter(x=>x.marks>=40)
-console.log(res31)
+let passedStudents=students.filter(student=>student.marks>=40)
+console.log('Student Passed in Exam are',passedStudents);
 
 //map() to add a grade field
  /*       ≥90 → A
         ≥75 → B
         ≥60 → C
         else → D*/
-let res32=students.map(x=>{
-    if(x.marks>=90){
-        x.grade='A'
+let studentWithGrades=students.map(student=>{
+    let grade='D';
+    if(student.marks>=90){
+        grade='A'
     }
-    else if(x.marks>=75&&x.marks<90){
-        x.grade='B'
+    if(student.marks>=75&&student.marks<90){
+        grade='B'
     }
-    else if(x.marks>=60 && x.marks<75){
-        x.grade='C'
-    }
-    else{
-        x.grade='D'
-    }
-    return x
+    if(student.marks>=60 && student.marks<75){
+        grade='C'
+    }   
+    return {...student,grade};
 })
-console.log(res32)
+console.log('Student with Grades',studentWithGrades);
+
 
 //reduce() to calculate average marks
-let res33=students.reduce((acc,x)=>acc+x.marks,0)/students.length
-console.log(res33)
+let avgMarks=students.reduce((acc,x)=>acc+x.marks,0)/students.length
+console.log('Average marks:',avgMarks)
+
 
 //find() the student who scored 92
-let res34=students.find((x)=>x.marks==92);
-console.log(res34);
+let studentWith92=students.find((x)=>x.marks==92);
+console.log('Student scored 92 marks',studentWith92);
 
 //findIndex() of student "Kiran"
-let res35=students.findIndex((x)=>x.name=='kiran');
-console.log(res35);
+let indexOfKiran=students.findIndex((student)=>student.name=='Kiran');
+console.log('Index of Kiran:',indexOfKiran);
 
 
 
@@ -152,27 +156,31 @@ const movies = [
 ];
 
 //filter() only "Sci-Fi" movies
-let res41=movies.filter(x=>x.genre=="Sci-Fi");
-console.log(res41);
+let scifiMovies=movies.filter(movie=>movie.genre=="Sci-Fi");
+console.log('Sci-Fi movies are',scifiMovies);
 
 // map() to return:"Inception (8.8)"
-let res42=movies.map((x)=>{ 
-    return `${x.title} (${x.rating})`
-
+let detailedInfo=movies.map((movie)=>{ 
+    return [movie.title,movie.rating];
 });
-console.log(res42);
+console.log('Movie info with title and rating:',detailedInfo);
 
 //reduce() to find average movie rating
-let res43=movies.reduce((acc,x)=>acc+x.rating,0)/movies.length;
-consolelog(res43.toFixed(2));
+let avgRating=movies.reduce((acc,movie)=>acc+movie.rating,0)/movies.length;
+console.log(avgRating.toFixed(2));
 
 //find() movie "Joker"
-let res44=movies.find(x=>x.title=='Joker');
-console.log(res44);
+let jokerMovie=movies.find(movie=>movie.title=='Joker');
+if(!jokerMovie){
+  console.log('Joker is not in Movie')
+}
+else{
+  console.log('Joker is in Movies')
+}
 
 //findIndex() of "Avengers"
-let res45=movies.findIndex(x=>x.title=='Avengers');
-console.log(res45);
+let indexOfAvengers=movies.findIndex(movie=>movie.title=='Avengers');
+console.log('Index of Avengers is',indexOfAvengers);
 
 
 
@@ -196,23 +204,23 @@ const transactions = [
 ];
 
 //filter() all credit transactions
-let res51=transactions.filter(x=>x.type=='credit');
-console.log(res51);
+let creditTranscations=transactions.filter(transaction=>transaction.type=='credit');
+console.log('credit transactions are:',creditTranscations);
 
 //map() to extract only transaction amounts
-let res52=transactions.map(x=> x.amount)
-console.log(res52);
+let transactionAmount=transactions.map(transaction=> transaction.amount)
+console.log('Transaction Amount is',transactionAmount);
 
 //reduce() to calculate final account balance
-let res53=transactions.reduce((acc,x)=>{
-    return (x.type=='credit')?acc+x.amount:acc-x.amount;
+let accountBalance=transactions.reduce((acc,transaction)=>{
+    return (transaction.type=='credit')?acc+transaction.amount:acc-transaction.amount;
 },0);
-console.log(res53);
+console.log('Account Balance is',accountBalance);
 
  //find() the first debit transaction
-let res54=transactions.find(x=>x.type=='debit');
-console.log(res54);
+let firstDebit=transactions.find(transaction=>transaction.type=='debit');
+console.log('First Debit transaction is',firstDebit);
 
 //findIndex() of transaction with amount 10000
-let res55=transactions.findIndex(x=>x.amount==10000);
-console.log(res55);
+let indexOf10000=transactions.findIndex(transaction=>transaction.amount==10000);
+console.log('Index of 10000 Transaction is',indexOf10000);
