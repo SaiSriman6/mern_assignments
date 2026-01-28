@@ -17,15 +17,14 @@ console.log(d1.getDate());
 
 //Day of Week
 let days = ["Sunday", "Monday", "Tuesday", "Wednesday","Thursday", "Friday", "Saturday"];
-dayindex=d1.getDate();
+dayindex=d1.getDay();
 console.log(days[dayindex]);
 
 //* Hours, minutes, seconds
 console.log(d1.getHours(),",",d1.getMinutes(),",", d1.getSeconds());
 
 // Display the date in this format: DD-MM-YYYY HH:mm:ss
-console.log(d1.getDate(),":",d1.getMonth()+1,":",d1.getFullYear() ,d1.getHours(),":",d1.getMinutes(),":",d1.getSeconds());
-
+console.log(d1.getDate(),"-",d1.getMonth()+1,"-",d1.getFullYear() ,d1.getHours(),":",d1.getMinutes(),":",d1.getSeconds());
 
 
 //  Date Comparison & Validation (Beginner → Intermediate)
@@ -34,7 +33,7 @@ let enrollmentDeadline = new Date("2026-01-20");
 // * Today is before deadline → "Enrollment Open"
 // * Today is after deadline → "Enrollment Closed"
 let currentDate=new Date();
-if(currentDate<enrollmentDeadline){
+if(currentDate<=enrollmentDeadline){
     console.log('Enrollment Open');
 }
 else{
@@ -46,10 +45,10 @@ else{
 // 2. Validate user input date:
 // * Input: "2026-02-30"
 // * Detect whether the date is valid or invalid
-let date1="2026-02-30";
-let parts = date1.split("-");
-let date3 = new Date(parts[0],parts[1]-1,parts[2]);
-if(parts[0]==date3.getFullYear() && parts[1]==date3.getMonth() && parts[2]==date3.getDate()){
+let inputDate="2026-02-30";
+let parts=inputDate.split("-");
+let validatedDate = new Date(parts[0],parts[1]-1,parts[2]);
+if(parts[0]==validatedDate.getFullYear() && parts[1]==validatedDate.getMonth() && parts[2]==validatedDate.getDate()){
     console.log("Valid date");
 }
 else{
