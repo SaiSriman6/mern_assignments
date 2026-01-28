@@ -53,11 +53,11 @@ function getAllTasks(){
 //}
 
 function completeTask(taskId){
-   let task=tasks.find(x=>x.id==taskId);
-   if(!task){
+   let findTask=tasks.find(task=>task.id==taskId);
+   if(!findTask){
     return 'Task not found';
    }
-   task.completed=true;
+   findTask.completed=true;
    return "task has been completed";
 }
 
