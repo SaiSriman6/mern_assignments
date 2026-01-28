@@ -10,7 +10,7 @@ console.log('All Products:');
 console.log(getAllProducts());
                         
 // 2. Search for products
- console.log('\nSearching for "phone":');
+console.log('\nSearching for "phone":');
 console.log(searchProducts('phone'));
                         
 // 3. Add items to cart
