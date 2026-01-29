@@ -20,7 +20,7 @@ console.log('Total Cart Amount',calculateCartTotal);
 // -> Increase quantity of a course (immutably)
 let increaseQty=(courseId)=>
     mergeCartWithCourses.map(item => 
-      item.courseId === courseId?{ ...item, qty: item.qty + incBy }:item
+      item.courseId === courseId?{ ...item, qty: item.qty+1}:item
   );
 let newCart=increaseQty(103);
 
