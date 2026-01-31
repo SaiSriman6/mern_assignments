@@ -1,0 +1,37 @@
+GET http://localhost:3001/products
+
+###
+POST http://localhost:3001/products
+Content-Type: application/json
+
+{
+    "productId":104,
+    "name":"shirt",
+    "price":2000,
+    "brand":"Nike"
+}
+
+###
+PUT http://localhost:3001/products
+Content-Type: application/json
+
+{
+    "productId":104,
+    "name":"pant",
+    "price":3500,
+    "brand":"Nike"
+}
+
+###
+GET http://localhost:3001/products/104
+
+###
+GET http://localhost:3001/products/Puma
+
+
+###
+DELETE http://localhost:3001/users/101
+
+
+###
+GET http://localhost:3001/user-api/users
