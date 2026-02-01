@@ -3,7 +3,7 @@ import exp from 'express';
 //create mini - express(Seperate Route) app
 export const userApp=exp.Router();
 
-
+// In-memory array to store user data
 let users=[];
 
 
@@ -20,6 +20,7 @@ userApp.get('/users',(req,res)=>{
 //post req handling route
 userApp.post('/users',(req,res)=>{
  
+  // Read user details sent by client
   let newUser=req.body;
 
   //adding user to users
@@ -51,16 +52,21 @@ userApp.put('/users',(req,res)=>{
 
 })
 
+// GET user by id
 userApp.get('/users/:id',(req,res)=>{
- 
-  let userId=Number(req.params.id)      //recieves id as String from URL so we use Number
+  
+  // Convert id from URL parameter to number
+  let userId=Number(req.params.id)      
 
+  // Find user using id
   let user=users.find(userObj=>userObj.id==userId);
 
+  // If user is not found
   if(!user){
      return res.status(404).json({message:"User not found"});
   }
 
+  // Send user data
   res.status(200).json({message:"user",payload:user})
 })
 
@@ -69,15 +75,20 @@ userApp.get('/users/:id',(req,res)=>{
 //delete req handling route
 userApp.delete('/users/:id',(req,res)=>{
 
+  // Convert id from URL parameter to number
   let userId=Number(req.params.id);
 
+  // Find index of user to be deleted
   let userIndex=users.findIndex(user=>user.id===userId);
 
+  // If user does not exist
   if(userIndex===-1){
     return res.json({message:"user not found"});
   }
 
+  // Remove user from array
   let deletedUser=users.splice(userIndex,1);
   
+  // send success response
   res.json({message:"user deleted"});
 })

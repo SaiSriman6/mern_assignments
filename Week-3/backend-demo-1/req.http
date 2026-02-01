@@ -1,7 +1,9 @@
-GET http://localhost:3001/products
+### product API requests
+### read all products
+GET http://localhost:3001/product-api/products
 
-###
-POST http://localhost:3001/products
+### create a new product
+POST http://localhost:3001/product-api/products
 Content-Type: application/json
 
 {
@@ -11,8 +13,8 @@ Content-Type: application/json
     "brand":"Nike"
 }
 
-###
-PUT http://localhost:3001/products
+### update a product
+PUT http://localhost:3001/product-api/products
 Content-Type: application/json
 
 {
@@ -22,16 +24,43 @@ Content-Type: application/json
     "brand":"Nike"
 }
 
-###
-GET http://localhost:3001/products/104
+### get product by id 
+GET http://localhost:3001/product-api/product-id/104
 
-###
-GET http://localhost:3001/products/Puma
+### get product by brand
+GET http://localhost:3001/product-api/product-brand/nike
+
+### delete product by id
+DELETE http://localhost:3001/product-api/products/104
 
 
-###
-DELETE http://localhost:3001/users/101
 
-
-###
+###  user API requests
+### read all users
 GET http://localhost:3001/user-api/users
+
+### create new user
+POST http://localhost:3001/user-api/users
+Content-Type: application/json
+
+{
+    "id": 4,
+    "name": "Ram",
+    "city": "Banglore"
+}
+
+### update a user by id
+PUT http://localhost:3001/user-api/users
+Content-Type: application/json
+
+{
+    "id": 4,
+    "name": "Mahesh",
+    "city": "Hyderabad"
+}
+
+### get user by id
+GET http://localhost:3001/user-api/users/4
+
+### delete user by id
+DELETE http://localhost:3001/user-api/users/4
