@@ -21,7 +21,7 @@ let coursesWithDetails=cart.map(prod=> [prod.name,prod.price*prod.quantity])
 console.log('Product With details',coursesWithDetails);
 
 //Use reduce() to calculate grand total cart value
-let cartTotal=cart.reduce((acc,prod)=>acc+prod.quantity+prod.price,0)
+let cartTotal=cart.reduce((acc,prod)=>acc+prod.quantity*prod.price,0)
 console.log(cartTotal);
 
 //Use find() to get details of "Mouse"
