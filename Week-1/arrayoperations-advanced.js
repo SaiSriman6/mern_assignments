@@ -13,19 +13,19 @@ const cart = [
   { id: 104, name: "Monitor", price: 12000, quantity: 1, inStock: true }
 ];
 //Use filter() to get only inStock products
-let inStockProducts=cart.filter(x=>x.inStock==true)
+let inStockProducts=cart.filter(prod =>prod.inStock==true)
 console.log('Products available are',inStockProducts)
 
 //Use map() to create a new array with:  { name, totalPrice }
-let coursesWithDetails=cart.map(x=> [x.name,x.price*x.quantity])
+let coursesWithDetails=cart.map(prod=> [prod.name,prod.price*prod.quantity])
 console.log('Product With details',coursesWithDetails);
 
 //Use reduce() to calculate grand total cart value
-let cartTotal=cart.reduce((acc,item)=>acc+item.quantity+item.price,0)
+let cartTotal=cart.reduce((acc,prod)=>acc+prod.quantity+prod.price,0)
 console.log(cartTotal);
 
 //Use find() to get details of "Mouse"
-let mouseInCart=cart.find(x=>x.name=='Mouse')
+let mouseInCart=cart.find(prod=>prod.name=='Mouse')
 if(!mouseInCart){
   console.log('mouse is not in cart');
 }
@@ -34,7 +34,7 @@ else{
 }
 
 //Use findIndex() to find the position of "Keyboard"
-let indexOfKeyboard=cart.findIndex(x=>x.name=='Keyboard')
+let indexOfKeyboard=cart.findIndex(prod=>prod.name=='Keyboard')
 console.log('Index of keyboard',indexOfKeyboard)
 
 
