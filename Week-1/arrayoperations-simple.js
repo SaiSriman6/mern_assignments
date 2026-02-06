@@ -4,19 +4,19 @@
 //temperatures = [32, 35, 28, 40, 38, 30, 42];
 let temperatures = [32, 35, 28, 40, 38, 30, 42];
 // filter() temperatures above 35
-let tempAbove35= temperatures.filter(x=> x>35);
+let tempAbove35= temperatures.filter(temp=> temp>35);
 console.log('temperatures above 35 are',tempAbove35);
 // map() to convert all temperatures from Celsius → Fahrenheit
-let tempInFahrenheit=temperatures.map(x=> x*1.8+32);
+let tempInFahrenheit=temperatures.map(temp=> temp*1.8+32);
 console.log('temp in Fahrenheit',tempInFahrenheit);
 // reduce() to calculate average temperature
-let avgTemperature=temperatures.reduce((acc,x)=> acc+x) / temperatures.length
+let avgTemperature=temperatures.reduce((acc,temp)=> acc+temp) / temperatures.length
 console.log('Avg temperature is',avgTemperature);
 // find() first temperature above 40
-let firstTempabove40= temperatures.find(x=> x>40);
+let firstTempabove40= temperatures.find(temp=> temp>40);
 console.log('first temperature above 40 is',firstTempabove40);
 //findIndex() of temperature 28
-let indexOf28=temperatures.findIndex(x=> x==28);
+let indexOf28=temperatures.findIndex(temp=> temp==28);
 console.log('Index of temp 28 is',indexOf28);
 
 
@@ -74,21 +74,21 @@ Tasks:
    
 const marks = [78, 92, 35, 88, 40, 67];
 //1. filter() marks ≥ 40 (pass marks)
-let marksGreaterThan40=marks.filter(x=>x>=40)
+let marksGreaterThan40=marks.filter(m=>m>=40)
 console.log('marks greater than 40 are',marksGreaterThan40);
 
 //2. map() to add 5 grace marks to each student
-let increasedMarks=marks.map(x=>x+5)
+let increasedMarks=marks.map(m=>m+5)
 console.log('increased marks are',increasedMarks);
 
 //3. reduce() to find highest mark
-let highestMarks=marks.reduce((acc,x)=>(acc<x)?x:acc,0)
+let highestMarks=marks.reduce((acc,m)=>(acc<m)?m:acc,0)
 console.log('highest marks',highestMarks);
 
 //4. find() first mark below 40
-let firstMarksbelow40=marks.find(x=>x<40)
+let firstMarksbelow40=marks.find(m=>m<40)
 console.log('first mark below 40',firstMarksbelow40);
 
 //5. findIndex() of mark 92
-let indexOf92=marks.findIndex(x=>x==92)
+let indexOf92=marks.findIndex(m=>m==92)
 console.log('Index of marks 92',indexOf92);
